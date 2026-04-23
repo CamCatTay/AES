@@ -1,6 +1,5 @@
 
-
-public class Round_Key_Generator {
+public class RoundKeyGenerator {
 
     // For testing, will be replaced with generated s-box later
     private static final int[] S_BOX = {
@@ -91,7 +90,7 @@ public class Round_Key_Generator {
 
     // === Main function for testing and debugging ===
     public static void main(String[] args) {
-        Round_Key_Generator rkg = new Round_Key_Generator();
+        RoundKeyGenerator rkg = new RoundKeyGenerator();
 
         // Textbook pages 193-194
         int[] key_bytes = {

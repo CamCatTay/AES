@@ -1,5 +1,5 @@
-public class AES {
-  
+public class Diffusion {
+
   public static void main(String[] args){
     test_shift_rows();
     test_mix_columns();
@@ -126,7 +126,7 @@ public class AES {
     System.out.println("Block after inverse_mix_columns (should be original):");
     hex_print(block);
   }
-  
+
   // prints out an int[][] array in hex
   public static void hex_print(int[][] block){
     System.out.println("{");
@@ -138,5 +138,5 @@ public class AES {
     }
     System.out.println("}");
   }
-  
+
 }
