@@ -1,25 +1,5 @@
 public class AES_Sbox {
 
-    //gf(2^8) multiplication for table generation
-    public static int xtime(int x) {
-        x <<= 1;
-        if ((x & 0x100) != 0) x ^= 0x11B;
-        return x & 0xFF;
-    }
-
-    public static int gfMulNoMod(int a, int b) {
-        int result = 0;
-
-        while (b != 0) {
-            if ((b & 1) != 0) result ^= a;
-            a = xtime(a);
-            b >>= 1;
-        }
-
-        return result;
-    }
-
-
     static int[] logTable = new int[256];
     static int[] expTable = new int[512];
 
@@ -31,7 +11,7 @@ public class AES_Sbox {
             expTable[i] = x;
             logTable[x] = i;
 
-            x = gfMulNoMod(x, 0x03); // generator for AES field
+            x = GaloisMath.multiply_galois(x, 0x03, 0x11b); // generator for AES field
         }
 
         // extend exp table
