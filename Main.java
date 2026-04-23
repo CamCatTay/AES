@@ -16,12 +16,10 @@ public class Main {
         String output_path = args[2];
         String mode        = args[3].toLowerCase();
 
-        if (mode.equals("decrypt")) {
-            decrypt_file(key_input, input_path, output_path);
-        } else if (mode.equals("demo")) {
-            demo(key_input, input_path, output_path);
-        } else {
-            encrypt_file(key_input, input_path, output_path);
+        switch (mode) {
+            case "decrypt" -> decrypt_file(key_input, input_path, output_path);
+            case "demo" -> demo(key_input, input_path, output_path);
+            default -> encrypt_file(key_input, input_path, output_path);
         }
     }
 
