@@ -39,7 +39,7 @@ public class RoundKeyGenerator {
     // Output: int[11][4][4] -> 11 4x4 round key blocks
     // round 0 = initial key, rounds 1-10 = expanded keys
     // add_round_key can XOR block[row][col] ^= round_keys[r][row][col]
-    public int[][][] generate_all_keys(int[] key_bytes) {
+    public int[][][] generate_all_keys(byte[] key_bytes) {
         // Pack 16 input bytes into 4 words
         int[] words = new int[44];
         for (int i = 0; i < 4; i++) {
@@ -80,11 +80,11 @@ public class RoundKeyGenerator {
         RoundKeyGenerator rkg = new RoundKeyGenerator(s_box);
 
         // Textbook pages 193-194
-        int[] key_bytes = {
-            0x0f, 0x15, 0x71, 0xc9,   // W0
-            0x47, 0xd9, 0xe8, 0x59,   // W1
-            0x0c, 0xb7, 0xad, 0xd6,   // W2
-            0xaf, 0x7f, 0x67, 0x98    // W3
+        byte[] key_bytes = {
+            (byte)0x0f, (byte)0x15, (byte)0x71, (byte)0xc9,   // W0
+            (byte)0x47, (byte)0xd9, (byte)0xe8, (byte)0x59,   // W1
+            (byte)0x0c, (byte)0xb7, (byte)0xad, (byte)0xd6,   // W2
+            (byte)0xaf, (byte)0x7f, (byte)0x67, (byte)0x98    // W3
         };
 
         int[][][] round_keys = rkg.generate_all_keys(key_bytes);
