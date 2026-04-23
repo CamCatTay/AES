@@ -130,12 +130,12 @@ public class Diffusion {
   // prints out an int[][] array in hex
   public static void hex_print(int[][] block){
     System.out.println("{");
-    for(int i = 0; i < block.length; i++){
-      for(int j = 0; j < block[0].length; j++){
-        System.out.print(Integer.toHexString(block[i][j]) + ", ");
+      for (int[] block_i : block) {
+          for (int j = 0; j < block[0].length; j++) {
+              System.out.print(Integer.toHexString(block_i[j]) + ", ");
+          }
+          System.out.println();
       }
-      System.out.println();
-    }
     System.out.println("}");
   }
 
