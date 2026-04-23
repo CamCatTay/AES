@@ -4,10 +4,12 @@ public class AES {
     test_shift_rows();
     test_mix_columns();
   }
-  
+
+  // perform AES shift rows given a 4x4 block of input
   public static void shift_rows(int[][] block){
     if (block.length!=4 || block[0].length!=4){
       System.out.println("shift_rows: invalid input block. Must be 4x4 (is " + block.length + "x" + block[0].length + "). Block unchanged");
+      return;
     }
     for(int i = 1; i < block.length; i++){
       int temp0 = block[i][i];
@@ -20,10 +22,12 @@ public class AES {
       block[i][3] = temp3;
     }
   }
-  
+
+  // perform AES inverse of shift rows given a 4x4 input block
   public static void inverse_shift_rows(int[][] block){
     if (block.length!=4 || block[0].length!=4){
       System.out.println("shift_rows: invalid input block. Must be 4x4 (is " + block.length + "x" + block[0].length + "). Block unchanged");
+      return;
     }
     for(int i = 1; i < block.length; i++){
       int temp0 = block[i][(-i+4)%4];
@@ -36,7 +40,8 @@ public class AES {
       block[i][3] = temp3;
     }
   }
-  
+
+  // a test to observe output for shift_rows and inverse_shift_rows
   public static void test_shift_rows(){
     int[][] block = {
       {0xf3,0x44,0x19,0x59},
@@ -53,10 +58,12 @@ public class AES {
     System.out.println("Block after inverse_shift_rows (should be original):");
     hex_print(block);
   }
-  
+
+  // perform AES mix columns given a 4x4 block of input
   public static void mix_columns(int[][] block){
     if (block.length!=4 || block[0].length!=4){
       System.out.println("shift_rows: invalid input block. Must be 4x4 (is " + block.length + "x" + block[0].length + "). Block unchanged");
+      return;
     }
     int mx = 0x11b;
     int[][] mix_constant = {
@@ -76,10 +83,12 @@ public class AES {
       block[3][j] = temps[3];
     }
   }
-  
+
+  // perform AES inverse of mix columns given a 4x4 input block
   public static void inverse_mix_columns(int[][] block){
     if (block.length!=4 || block[0].length!=4){
       System.out.println("shift_rows: invalid input block. Must be 4x4 (is " + block.length + "x" + block[0].length + "). Block unchanged");
+      return;
     }
     int mx = 0x11b;
     int[][] mix_constant = {
@@ -99,7 +108,8 @@ public class AES {
       block[3][j] = temps[3];
     }
   }
-  
+
+  // a test to observe output for mix_columns and inverse_mix_columns
   public static void test_mix_columns(){
     int[][] block = {
       {0x87,0xf2,0x4d,0x97},
@@ -117,7 +127,7 @@ public class AES {
     hex_print(block);
   }
   
-  // prints an int[][] array in hex
+  // prints out an int[][] array in hex
   public static void hex_print(int[][] block){
     System.out.println("{");
     for(int i = 0; i < block.length; i++){
