@@ -1,7 +1,7 @@
 public class SBox {
 
-    static int[] logTable = new int[256];
-    static int[] expTable = new int[512];
+    static final int[] logTable = new int[256];
+    static final int[] expTable = new int[512];
 
     static {
         int x = 1;
